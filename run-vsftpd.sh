@@ -83,6 +83,4 @@ if [ $LOG_STDOUT ]; then
 fi
 
 # Run vsftpd:
-# cat /etc/vsftpd/vsftpd.conf
 /usr/sbin/vsftpd -obackground=NO /etc/vsftpd/vsftpd.conf
-# /usr/sbin/vsftpd &>/dev/null /etc/vsftpd/vsftpd.conf
