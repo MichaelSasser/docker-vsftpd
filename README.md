@@ -1,25 +1,20 @@
-# fauria/vsftpd
-
-![docker_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_139x115.png)![docker_fauria_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_fauria_161x115.png)
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/)
-[![Docker Build Status](https://img.shields.io/docker/build/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/builds/)
-[![](https://images.microbadger.com/badges/image/fauria/vsftpd.svg)](https://microbadger.com/images/fauria/vsftpd "fauria/vsftpd")
+# michaelsasser89/vsftpd
 
 This Docker container implements a vsftpd server, with the following features:
 
- * Centos 7 base image.
+ * Debian slim (stable) base image.
  * vsftpd 3.0
  * Virtual users
  * Passive mode
+ * FTPS support
  * Logging to a file or STDOUT.
 
 ### Installation from [Docker registry hub](https://registry.hub.docker.com/r/fauria/vsftpd/).
 
 You can download the image with the following command:
 
-```bash
-docker pull fauria/vsftpd
+```shell
+docker pull michaelsasser89/vsftpd
 ```
 
 Environment variables
