@@ -19,6 +19,7 @@ fi
 
 # Create the secure_chroot_dir: /var/run/vsftpd/empty
 mkdir -p /var/run/vsftpd/empty
+chown -R ftp:ftp /var/run/vsftpd/empty
 
 # Create home dir and update vsftpd user db:
 mkdir -p "/home/vsftpd/${FTP_USER}"
@@ -75,12 +76,15 @@ cat <<EOB
 	· FTP User: $FTP_USER
 	· FTP Password: $FTP_PASS
 	· Log file: $LOG_FILE
-	· Redirect vsftpd log to STDOUT: No.
 EOB
 if [ $LOG_STDOUT ]; then
   echo "Log file $LOG_FILE"
-  /bin/ln -sf /dev/stdout "$LOG_FILE"
+
+  mkdir -p /var/log/vsftpd
+  touch ${LOG_FILE}
+  chown ftp:ftp -R /var/log/vsftpd
+  tail -f ${LOG_FILE} | tee /dev/fd/1 &
 fi
 
 # Run vsftpd:
-/usr/sbin/vsftpd -obackground=NO /etc/vsftpd/vsftpd.conf
+/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
